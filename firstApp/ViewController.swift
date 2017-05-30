@@ -21,6 +21,9 @@ enum modes {
 class ViewController: UIViewController {
     // initialize the variables at start of program (what they will be set to) 
     
+    @IBOutlet weak var label: UILabel!
+    
+    
     var labelString: String = "0";
     var currentMode:modes = .not_set;
     var savedNum:Int = 0;
@@ -38,15 +41,36 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     };
+    @IBAction func didPressPlus(_ sender: Any) {
+    }
+    @IBAction func didPressSubtract(_ sender: Any) {
+    }
 
+    @IBAction func didPressEquals(_ sender: Any) {
+    }
+    
+    @IBAction func didPressClear(_ sender: Any) {
+    }
+    
+    @IBAction func didPressNumber(_ sender: UIButton) {
+        
+        let stringValue:String? = sender.titleLabel?.text;
+        labelString = labelString.appending(stringValue!);
+        updateText();
+        
+    }
     
     
-    func updatetext() {
-        <#function body#>
+    
+    func updateText() {
+        guard let labelInt:Int = Int(labelString) else {
+            return;
+        }
+        label.text = "\(labelInt)";
     }
     
     func changeMode(newMode:modes) {
-        <#function body#>
+        
     }
     
     
